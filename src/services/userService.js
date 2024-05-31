@@ -3,6 +3,7 @@ const axios = require('axios')
 
 // all services will define here regarding orders
 const getOrderService = async (intentName, orderId) => {
+  let apiUrl = 'https://orderstatusapi-dot-organization-project-311520.uc.r.appspot.com/api/getOrderStatus'
   // getOrderService  Start 
   try {
     if (intentName === "Final Intent") {
@@ -10,7 +11,7 @@ const getOrderService = async (intentName, orderId) => {
         status: true, fulfillmentText: "Your Welcome! Have a nice day ahead"
       }
     }
-    const response = await axios.post('https://orderstatusapi-dot-organization-project-311520.uc.r.appspot.com/api/getOrderStatus', {
+    const response = await axios.post(apiUrl, {
       orderId: orderId
     });
     const shipmentDate = new Date(response.data.shipmentDate).toDateString();
